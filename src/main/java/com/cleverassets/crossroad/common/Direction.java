@@ -1,4 +1,4 @@
-package com.cleverassets.crossroad.result;
+package com.cleverassets.crossroad.common;
 
 public enum Direction {
     NORTH,

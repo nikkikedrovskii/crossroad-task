@@ -1,16 +1,11 @@
-package com.cleverassets.crossroad.result;
+package com.cleverassets.crossroad.common;
 
+import lombok.Data;
+
+@Data
 public abstract class Event implements Comparable<Event> {
 
     protected int time;
-
-    public Event(int time) {
-        this.time = time;
-    }
-
-    public int getTime() {
-        return time;
-    }
 
     @Override
     public int compareTo(Event other) {

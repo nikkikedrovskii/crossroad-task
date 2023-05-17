@@ -1,12 +1,24 @@
 package com.cleverassets.crossroad;
 
-import com.cleverassets.crossroad.result.Crossroad;
+import com.cleverassets.crossroad.factory.CrossroadSimulationFactory;
+import com.cleverassets.crossroad.factory.TrafficLightFactory;
+import com.cleverassets.crossroad.properties.CrossroadConfigurationProperties;
 
 public class CrossroadTaskApplication {
 
         public static void main(String[] args) {
-            var crossroad = new Crossroad(30,5,6,7,2,20,12);
-            crossroad.startSimulation(60);
+            var trafficLightFactory = new TrafficLightFactory();
+            var crossroadConfigurationProperties = new CrossroadConfigurationProperties();
+            var crossroadSimulationFactory = new CrossroadSimulationFactory(crossroadConfigurationProperties,trafficLightFactory);
+
+            var crossroad = crossroadSimulationFactory.create();
+            crossroad.startSimulation();
+
+            System.out.println("North count car - " + crossroad.getNorthRoad().getCountNorthCar());
+            System.out.println("South count car - " + crossroad.getSouthRoad().getCountSouthCar());
+            System.out.println("West count car - " + crossroad.getWestRoad().getCountWestCar());
+            System.out.println("East count car  - " + crossroad.getEastRoad().getCountEastCar());
         }
+
 
 }
